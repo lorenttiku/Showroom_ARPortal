@@ -29,11 +29,35 @@ public class Portal : MonoBehaviour
         }
     }
 
+    bool GetIsInFront()
+    {
+        Vector3 pos = transform.InverseTransformPoint(device.position);
+        return pos.z >= 0 ? true : false;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.transform != device)
+            return;
+        wasInFront = GetIsInFront();
+    }
+
 
     void OnTriggerStay(Collider other)
     {
 
+        if (other.transform != device)
 
+            return;
+        bool isInFront = GetIsInFront();
+        if((isInFront && !wasInFront) || (wasInFront && !isInFront))
+        {
+            inOtherWorld = !inOtherWorld;
+            SetMaterials(inOtherWorld);
+        }
+
+        wasInFront = isInFront;
+        
     }
 
 
