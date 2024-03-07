@@ -37,6 +37,7 @@ Shader "Custom/SpecularStencilFilter"
         [Normal] _DetailNormalMap("Normal Map", 2D) = "bump" {}
 
         [Enum(UV0,0,UV1,1)] _UVSec ("UV Set for secondary textures", Float) = 0
+
         [Enum(Equal,3,NotEqual,6)] _StencilTest ("Stencil Test", int) = 6 
 
         // Blending state
@@ -236,7 +237,7 @@ Shader "Custom/SpecularStencilFilter"
           Stencil{
             Ref 1
             Comp [_StencilTest]
-            }
+          }
 
         // ------------------------------------------------------------------
         //  Base forward pass (directional light, emission, lightmaps, ...)

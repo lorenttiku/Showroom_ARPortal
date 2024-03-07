@@ -1322,15 +1322,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 132575743}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 65.97, y: 72.89, z: 9.143982}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.1299973, y: 0.8899994, z: -2.856018}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 132214233}
   - {fileID: 132214235}
   - {fileID: 132214237}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 864885925}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &132575737
 GameObject:
@@ -5733,7 +5733,7 @@ GameObject:
   m_Component:
   - component: {fileID: 864885925}
   m_Layer: 0
-  m_Name: NaturePark
+  m_Name: Park
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5902,6 +5902,7 @@ Transform:
   - {fileID: 1568776026}
   - {fileID: 1775945294}
   - {fileID: 2067293520}
+  - {fileID: 132214239}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &874918281
@@ -13050,4 +13051,3 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 864885925}
-  - {fileID: 132214239}
