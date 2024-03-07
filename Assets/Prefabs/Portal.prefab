@@ -117,7 +117,7 @@ GameObject:
   - component: {fileID: 245537020800510438}
   - component: {fileID: 7263724913239379933}
   - component: {fileID: 2230559554008734393}
-  - component: {fileID: 1908195251199971018}
+  - component: {fileID: 7349305973978094073}
   m_Layer: 0
   m_Name: PortalWindow
   m_TagString: Untagged
@@ -212,7 +212,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1908195251199971018
+--- !u!114 &7349305973978094073
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -221,14 +221,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1951135287322795400}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9f405d0c304a954fa21084bd13ed87c, type: 3}
+  m_Script: {fileID: 11500000, guid: 4767c63a1452bc542ac5bec025efe055, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  materials:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  device: {fileID: 0}
+  materials: []
 --- !u!1 &3156822227256279708
 GameObject:
   m_ObjectHideFlags: 0

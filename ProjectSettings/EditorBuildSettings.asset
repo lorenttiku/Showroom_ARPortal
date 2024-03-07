@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Park.unity
-    guid: 97df52322bb000f4eb0af9b0884b57ee
+    path: Assets/Scenes/Portal Test.unity
+    guid: 75153f38b271e724b87fc50face9db00
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 4c025d445f9ea0440b09a97c37e72fc8, type: 2}
     UnityEditor.XR.ARKit.ARKitSettings: {fileID: 11400000, guid: 5ca46ba4fabaea5408f01046fd5042a1, type: 2}
