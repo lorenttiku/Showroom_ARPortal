@@ -65,7 +65,6 @@ SubShader {
                 return col;
             }
         ENDCG
-    }
-}
+    }}
 
 }
