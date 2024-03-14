@@ -1,0 +1,36 @@
+ManifestFileVersion: 0
+CRC: 1467240963
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 89cd0e57f52d14991cd42e97ff58bcce
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: d093761738ba1bf8a6d5cff5da6e8997
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 89cd0e57f52d14991cd42e97ff58bcce
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 64
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Park/Prefabs/Boat.prefab
+Dependencies: []

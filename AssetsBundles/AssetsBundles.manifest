@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 3137374166
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: ardebugmenu
+      Dependencies: {}
+    Info_1:
+      Name: monalisa
+      Dependencies: {}
+    Info_2:
+      Name: barka
+      Dependencies: {}
+    Info_3:
+      Name: myfirstassetbundleprefab
+      Dependencies: {}

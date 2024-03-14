@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: 3f8ebdaaff83bcf4d8fb7bcd60572556
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - id: {instanceID: 0}
+  - img_name: {instanceID: 0}
+  - description: {instanceID: 0}
+  - Seats: {instanceID: 0}
+  - Doors: {instanceID: 0}
+  - Gastype: {instanceID: 0}
+  - speed: {instanceID: 0}
+  - Color: {instanceID: 0}
+  - Animation: {instanceID: 0}
+  - quality: {instanceID: 0}
+  - model_url: {instanceID: 0}
+  - image_target: {instanceID: 0}
+  - material: {fileID: 2100000, guid: 3d54f238296b14d4981c2daf89a6dda4, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
