@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,12 +7,14 @@ using UnityEngine.Rendering;
 
 public class Portal : MonoBehaviour
 {
+    public static event Action<bool> OnGetInPortal;
+
     public Material[] materials;
 
     public Transform device;
 
     bool wasInFront;
-    bool inOtherWorld;
+    public bool inOtherWorld;
   
     void Start()
     {
@@ -52,6 +55,7 @@ public class Portal : MonoBehaviour
         bool isInFront = GetIsInFront();
         if ((isInFront && !wasInFront) || (wasInFront && !isInFront))
         {
+            OnGetInPortal?.Invoke(!inOtherWorld);
             inOtherWorld = !inOtherWorld;
             SetMaterials(inOtherWorld);
         }

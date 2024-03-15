@@ -18,12 +18,14 @@ namespace Assets.Course
         private GameObject imgTargetCard;
         private string currentDataHash;
         private List<ImageTargetButton> imageTargetButtons = new List<ImageTargetButton>();
-        public GameObject detailsPanel;
+      
         public TextMeshProUGUI detailsDescription;
         public TextMeshProUGUI detailsAutorName;
         public RawImage detailsImage;
         public GameObject imgTargetCardPrefab;
-        public Transform PicturePosition;
+        public Transform[] instantiatePositions;
+        [SerializeField] private Portal portal;
+        List<GameObject> _images = new List<GameObject>();
 
 
         void Start()
@@ -39,7 +41,26 @@ namespace Assets.Course
 
             InvokeRepeating("AutoRefreshData", 1f, 2f);
         }
-
+        private void OnEnable()
+        {
+            Portal.OnGetInPortal += Portal_OnGetInPortal;
+          
+        }
+        private void OnDisable()
+        {
+            Portal.OnGetInPortal -= Portal_OnGetInPortal;
+        }
+        private void Portal_OnGetInPortal(bool obj)
+        {
+            if (obj)
+            {
+                TurnOn(_images);
+            }
+            else
+            {
+                TurnOff(_images);
+            }
+        }
 
         void OnRequestCompleted(Response response)
         {
@@ -55,23 +76,42 @@ namespace Assets.Course
             }
         }
 
+        void TurnOn(List<GameObject> imagePrefab)
+        {
+            foreach (var image in imagePrefab)
+            {
+                image.SetActive(true);
+            }
+         
+        }
+        void TurnOff(List<GameObject> imagePrefab)
+        {
+            foreach (var image in imagePrefab)
+            {
+                image.SetActive(false);
+            }
+  
 
+        }
         void RefreshUI(AllImageTargets allImageTargets)
         {
-            ClearUI();
-            imageTargetButtons.Clear();
+          
+            //imageTargetButtons.Clear();
 
             int count = allImageTargets.data.Length;
-            int index = 0;
+            int positionIndex = 0; // Initialize position index outside the loop
 
             for (int i = 0; i < count; i++)
             {
-                imgTargetCard = Instantiate(imgTargetCardPrefab) as GameObject;
-                imgTargetCard.SetActive(true);
+                // Instantiate the prefab at different positions
+                 imgTargetCard = Instantiate(imgTargetCardPrefab, instantiatePositions[positionIndex].position, Quaternion.identity) as GameObject;
 
+                imgTargetCard.SetActive(false);
+                _images.Add(imgTargetCard);
+
+                // Populate data for the instantiated prefab
                 ImageTargetButton imgTarget = imgTargetCard.GetComponent<ImageTargetButton>();
                 imageTargetButtons.Add(imgTarget);
-
                 imgTarget.id.text = allImageTargets.data[i].id.ToString();
                 imgTarget.Description.text = allImageTargets.data[i].Description;
 
@@ -80,7 +120,7 @@ namespace Assets.Course
                     imgTarget.PictureLink.texture = tex;
                 }));
 
-                // Find detailsAutorName within imgTargetCard
+                // Find detailsAutorName within instantiated prefab
                 TextMeshProUGUI detailsAutorName = imgTargetCard.GetComponentInChildren<TextMeshProUGUI>();
                 if (detailsAutorName != null)
                 {
@@ -91,16 +131,18 @@ namespace Assets.Course
                     Debug.LogError("detailsAutorName not found in imgTargetCard hierarchy.");
                 }
 
-                imgTargetCard.transform.SetParent(PicturePosition, false);
+                imgTargetCard.transform.SetParent(instantiatePositions[positionIndex], false);
 
-                int newIndex = index;
-                imgTargetCard.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(
-                    () =>
-                    {
-                        imageTargetDetails(newIndex, allImageTargets);
-                        detailsPanel.SetActive(true);
-                    });
-                index++;
+                int newIndex = positionIndex;
+                //imgTargetCard.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(
+                //    () =>
+                //    {
+                //        imageTargetDetails(newIndex, allImageTargets);
+                      
+                //    });
+
+                // Increment position index
+                positionIndex = (positionIndex + 1) % instantiatePositions.Length;
             }
         }
 
@@ -140,13 +182,7 @@ namespace Assets.Course
             StartCoroutine(RestApiClient.Instance.HttpGet(baseUrl, (r) => OnRequestCompleted(r)));
         }
 
-        void ClearUI()
-        {
-            foreach (Transform child in PicturePosition)
-            {
-                Destroy(child.gameObject);
-            }
-        }
+        
 
         private string GetHash(string input)
         {
