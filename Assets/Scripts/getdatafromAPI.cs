@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -210,6 +211,11 @@ public class AllImageTargets
 {
     public ImageTarget[] data;
     public Meta meta;
+
+    public static implicit operator AllImageTargets(ImageTarget v)
+    {
+        throw new NotImplementedException();
+    }
 }
 [System.Serializable]
 public class ImageTarget

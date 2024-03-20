@@ -9,7 +9,7 @@ namespace Assets.Course
         public TextMeshProUGUI id;
         public TextMeshProUGUI AutorName;
         public TextMeshProUGUI Description;
-        public RawImage PictureLink;
+        public MeshRenderer PictureLink;
 
         // Attach this method to the button click event in the Unity Editor
         public void OnButtonClick()

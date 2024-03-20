@@ -20,6 +20,7 @@ public class Portal : MonoBehaviour
     {
 
         SetMaterials(false);
+        device = Camera.main.transform;
 
     }
 
