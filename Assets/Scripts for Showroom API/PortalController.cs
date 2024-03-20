@@ -1,91 +1,101 @@
+using Assets.Course.Core.RestHttp;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 using UnityEngine.Networking;
 using Assets.Course.Models;
-using System.Collections;
+using System.Collections.Generic;
 using Assets.Course.Core;
-using Assets.Course.Core.RestHttp;
+using System.Collections;
+using Unity.VisualScripting;
 
 namespace Assets.Course
 {
-    public class PortalController : MonoBehaviour
+    public class MergedImageTargets : MonoBehaviour
     {
-        public string baseUrl = "http://localhost:3000/portalusers";
-        public Renderer[] cubeRenderers;
+        public string baseUrl = "http://localhost:3000/portaluserss";
+
+        private string currentDataHash;
+        public Material[] cubeMaterials;
 
         void Start()
         {
-            StartCoroutine(RestApiClient.Instance.HttpGet(baseUrl, OnRequestCompleted));
+            RequestHeader reqHeader = new RequestHeader
+            {
+                Key = "Content-Type",
+                Value = "application/json"
+            };
+
+            // Initial data load
+            StartCoroutine(RestApiClient.Instance.HttpGet(baseUrl, (r) => OnRequestCompleted(r)));
+
             InvokeRepeating("AutoRefreshData", 1f, 2f);
         }
 
-        private void OnRequestCompleted(Response response)
+        void OnRequestCompleted(Response response)
         {
-            if (response.Error != null)
-            {
-                Debug.LogError("Error in HTTP Request: " + response.Error);
-                return;
-            }
-
-            Debug.Log("Successful HTTP Request: " + response.StatusCode);
+            Debug.Log("Succesful HTTP Request: " + response.StatusCode);
             Debug.Log("Data: " + response.Data);
+            Debug.Log("Error: " + response.Error);
 
             AllImageTargets allImageTargets = JsonUtility.FromJson<AllImageTargets>(response.Data);
-            RefreshUI(allImageTargets);
+
+            if (currentDataHash != GetHash(response.Data))
+            {
+                currentDataHash = GetHash(response.Data);
+                RefreshUI(allImageTargets);
+            }
         }
 
         void RefreshUI(AllImageTargets allImageTargets)
         {
-            ClearImages();
+            int count = Mathf.Min(allImageTargets.data.Length, cubeMaterials.Length);
 
-            // Determine the maximum number of iterations based on the smaller array length
-            int maxIterations = Mathf.Min(allImageTargets.data.Length, cubeRenderers.Length);
-
-            for (int i = 0; i < maxIterations; i++)
+            for (int i = 0; i < count; i++)
             {
-                ImageTarget targetData = allImageTargets.data[i];
-                StartCoroutine(GetTexture(targetData.PictureLink, tex =>
+                int index = i; // Capture the current index in the loop
+
+                StartCoroutine(GetTexture(allImageTargets.data[i].PictureLink, tex =>
                 {
-                    // Assign the texture to the cube renderer's material
-                    cubeRenderers[i].material.mainTexture = tex;
-
-                    // Enable the cube renderer to make it visible
-                    cubeRenderers[i].enabled = true;
+                    // Apply texture to the cube material's _MainTex property
+                    cubeMaterials[index].SetTexture("_MainTex", tex);
                 }));
-
-                // Disable the cube renderer initially to prevent it from being rendered without a texture
-                cubeRenderers[i].enabled = false;
-            }
-        }
-
-        void ClearImages()
-        {
-            foreach (var renderer in cubeRenderers)
-            {
-                renderer.material.mainTexture = null;
             }
         }
 
         IEnumerator GetTexture(string url, System.Action<Texture> callback)
         {
             UnityWebRequest www = UnityWebRequestTexture.GetTexture(url);
+
             yield return www.SendWebRequest();
 
-            if (www.result == UnityWebRequest.Result.ConnectionError || www.result == UnityWebRequest.Result.ProtocolError)
+            if (www.result == UnityWebRequest.Result.ConnectionError)
             {
-                Debug.LogError("Error loading texture from URL: " + url);
-                Debug.LogError(www.error);
+                Debug.Log(www.error);
             }
             else
             {
-                Texture tex = DownloadHandlerTexture.GetContent(www);
-                Debug.Log("Texture loaded successfully from URL: " + url);
+              Texture tex = DownloadHandlerTexture.GetContent(www);
                 callback(tex);
             }
         }
 
         private void AutoRefreshData()
         {
-            StartCoroutine(RestApiClient.Instance.HttpGet(baseUrl, OnRequestCompleted));
+            StartCoroutine(RestApiClient.Instance.HttpGet(baseUrl, (r) => OnRequestCompleted(r)));
+        }
+
+        private string GetHash(string input)
+        {
+            if (input == null)
+            {
+                Debug.LogWarning("Input string is null. Unable to generate hash.");
+                return null; // or return an appropriate default value
+            }
+            else
+            {
+                return input.GetHashCode().ToString();
+            }
         }
     }
 }
