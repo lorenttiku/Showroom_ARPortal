@@ -13,10 +13,11 @@ namespace Assets.Course
 {
     public class MergedImageTargets : MonoBehaviour
     {
-        public string baseUrl = "http://localhost:3000/portaluserss";
+        public string baseUrl = "http://localhost:3000/portalusers";
 
         private string currentDataHash;
         public Material[] cubeMaterials;
+      
 
         void Start()
         {
@@ -53,16 +54,19 @@ namespace Assets.Course
 
             for (int i = 0; i < count; i++)
             {
-                int index = i; // Capture the current index in the loop
+
+          
+
+                int index = i; 
 
                 StartCoroutine(GetTexture(allImageTargets.data[i].PictureLink, tex =>
                 {
-                    // Apply texture to the cube material's _MainTex property
+                   
                     cubeMaterials[index].SetTexture("_MainTex", tex);
                 }));
             }
         }
-
+        
         IEnumerator GetTexture(string url, System.Action<Texture> callback)
         {
             UnityWebRequest www = UnityWebRequestTexture.GetTexture(url);
@@ -90,7 +94,7 @@ namespace Assets.Course
             if (input == null)
             {
                 Debug.LogWarning("Input string is null. Unable to generate hash.");
-                return null; // or return an appropriate default value
+                return null;
             }
             else
             {

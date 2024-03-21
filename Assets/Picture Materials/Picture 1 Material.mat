@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ui shader mat
+  m_Name: Picture 1 Material
   m_Shader: {fileID: 4800000, guid: ed525429a0637e144b702316f0447354, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -69,10 +69,10 @@ Material:
     m_Floats:
     - _BumpScale: 1
     - _ColorMask: 15
-    - _Cutoff: 0.307
+    - _Cutoff: 0.498
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _GlossMapScale: 0.555
+    - _GlossMapScale: 1
     - _Glossiness: 0.512
     - _GlossyReflections: 0
     - _Metallic: 0

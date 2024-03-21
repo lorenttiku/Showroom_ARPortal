@@ -1143,9 +1143,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseUrl: http://localhost:3000/portalusers
+  autorNameTexts:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  descriptionTexts:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   cubeMaterials:
-  - {fileID: 2100000, guid: faccc0fcaaa497440af6c30550cada5a, type: 2}
   - {fileID: 2100000, guid: 8b2f2a8a457e3944d8f226b41c4b6c3d, type: 2}
+  - {fileID: 2100000, guid: faccc0fcaaa497440af6c30550cada5a, type: 2}
+  - {fileID: 2100000, guid: aabdcad5f47b0a34e996317d4b2146db, type: 2}
+  - {fileID: 2100000, guid: db284a7183c134748b624da82ac436bd, type: 2}
+  - {fileID: 2100000, guid: 3b6482d41a7f58940969b19521a6dfd6, type: 2}
+  - {fileID: 2100000, guid: 11d650ee934dfbc43b3a5473de249364, type: 2}
 --- !u!4 &1191046136
 Transform:
   m_ObjectHideFlags: 0
@@ -1371,7 +1383,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1295551383
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1534,7 +1546,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1523026900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1992,10 +2004,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: lori
       objectReference: {fileID: 0}
-    - target: {fileID: 641957594908734870, guid: e0ee5b21fca21db4fbf003db52906837, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 726377683271587005, guid: e0ee5b21fca21db4fbf003db52906837, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2035,6 +2043,10 @@ PrefabInstance:
     - target: {fileID: 726377683271587005, guid: e0ee5b21fca21db4fbf003db52906837, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7020020187320471566, guid: e0ee5b21fca21db4fbf003db52906837, type: 3}
+      propertyPath: m_Name
+      value: 'Picture 6 Canvas  '
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
