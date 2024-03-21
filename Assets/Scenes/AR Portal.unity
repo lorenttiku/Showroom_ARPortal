@@ -1142,15 +1142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 278bcc9d7f8412c4795147250a568771, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseUrl: http://localhost:3000/portalusers
-  autorNameTexts:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  descriptionTexts:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  baseUrl: https://882d-84-22-36-74.ngrok-free.app/portalusers
   cubeMaterials:
   - {fileID: 2100000, guid: 8b2f2a8a457e3944d8f226b41c4b6c3d, type: 2}
   - {fileID: 2100000, guid: faccc0fcaaa497440af6c30550cada5a, type: 2}
@@ -2004,6 +1996,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: lori
       objectReference: {fileID: 0}
+    - target: {fileID: 641957594908734870, guid: e0ee5b21fca21db4fbf003db52906837, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 726377683271587005, guid: e0ee5b21fca21db4fbf003db52906837, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2043,10 +2039,6 @@ PrefabInstance:
     - target: {fileID: 726377683271587005, guid: e0ee5b21fca21db4fbf003db52906837, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7020020187320471566, guid: e0ee5b21fca21db4fbf003db52906837, type: 3}
-      propertyPath: m_Name
-      value: 'Picture 6 Canvas  '
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

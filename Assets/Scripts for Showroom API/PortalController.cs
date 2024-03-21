@@ -13,11 +13,14 @@ namespace Assets.Course
 {
     public class MergedImageTargets : MonoBehaviour
     {
-        public string baseUrl = "http://localhost:3000/portalusers";
+        public string baseUrl = "https://882d-84-22-36-74.ngrok-free.app/portalusers";
 
         private string currentDataHash;
         public Material[] cubeMaterials;
-      
+        //public TextMeshProUGUI AutorName;
+        //public TextMeshProUGUI Description;
+        //public GameObject TextCanvasPrefab;
+        //public Transform[] transforms;
 
         void Start()
         {
@@ -55,7 +58,7 @@ namespace Assets.Course
             for (int i = 0; i < count; i++)
             {
 
-          
+               
 
                 int index = i; 
 
@@ -64,6 +67,13 @@ namespace Assets.Course
                    
                     cubeMaterials[index].SetTexture("_MainTex", tex);
                 }));
+
+
+                //imgTarget.id.text = allImageTargets.data[i].id.ToString();
+                //imgTarget.AutorName.text = allImageTargets.data[i].id.AutorName;
+                //imgTarget.Description.text = allImageTargets.data[i].id.Description;
+
+
             }
         }
         
